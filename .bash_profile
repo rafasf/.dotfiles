@@ -15,4 +15,6 @@ alias mkdir='mkdir -p'
 alias p='cd ~/Projects'
 alias v='vim'
 
-function md() { mkdir -p "$@" && cd "$@" }
+function mkd() { 
+    mkdir -p "$@" && cd "$@" 
+}
