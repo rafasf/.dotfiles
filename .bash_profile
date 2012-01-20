@@ -12,4 +12,7 @@ export GREP_OPTIONS="--color"
 alias g='git'
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
+alias p='cd ~/Projects'
+alias v='vim'
 
+function md() { mkdir -p "$@" && cd "$@" }
