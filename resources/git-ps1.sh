@@ -299,22 +299,11 @@ __git_prompt() {
 
                 # extras (count strings, working dir symbols)
                 local countstr="$(__git_count_str)"
-                local wd_syms="${LIGHT_VIOLET}$(__git_working_dir_symbols)${RESET}"
-
-                # calc relative time diff of last commit
-                local secs="$(__git_secs_since)"
-                if [ -n "$secs" ]; then
-                    local timestr=" [$(__git_timestr_relformat $secs true)]"
-                    extras="${countstr}${wd_syms}${timestr}"
-                else 
-                    extras="${countstr}${wd_syms}"
-                fi
-            ;;
         esac
         branch="${YELLOW}${branch}${RESET}"
 
         # update PS1
-        PS1="${PS1} ${branch}"
+        PS1="${PS1} ${branch}${countstr}"
     fi
 
     # setup marker that acts off of last exit code
