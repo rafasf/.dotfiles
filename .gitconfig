@@ -16,4 +16,4 @@
     last = log -n 1 -p
 
 [pretty]
-    easy = %C(yellow)%h %C(green)(%an, %ad)%C(reset) %s %C(bold blue)%d%C(reset)
+    easy = %C(yellow)%h%C(reset) %s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
