@@ -3,6 +3,7 @@
 	email = mail
 [color]
     ui = auto
+
 [alias]
     st = status
     ci = commit
@@ -11,9 +12,13 @@
     df = diff
     dc = diff --cached
     l = log --pretty=easy
-    ll = log --pretty=easy --graph
-    lg = log -p
+    lg = log --pretty=easy --graph
+    ld = log -p
     last = log -n 1 -p
+    amend = commit --amend
 
 [pretty]
     easy = %C(yellow)%h%C(reset) %s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
+
+[merge]
+    tool = vimdiff
