@@ -5,6 +5,9 @@ source ${myLocation}/resources/git-completion.bash
 
 export EDITOR='vim'
 
+export HISTCONTROL=erasedups
+shopt -s histappend
+
 export CLICOLOR=true
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
