@@ -12,8 +12,10 @@ export CLICOLOR=true
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
+projets_root="$HOME/Projects"
+
 alias g='git'
-alias p='cd ~/Projects'
+alias p='cd $projets_root/$1'
 alias vi='v'
 alias mv='mv -v'
 alias cp='cp -v'
@@ -49,5 +51,12 @@ function mkd() {
 function rso() {
     source "$HOME/.bash_profile"
 }
+
+_projects() {
+    local cur
+    cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $( compgen -S/ -d $projets_root/$cur | sed -e s#$projets_root/##) )
+}
+complete -o nospace -F _projects p
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
