@@ -3,8 +3,6 @@ myLocation=$(dirname $(readlink -n $BASH_SOURCE))
 source ${myLocation}/resources/git-ps1.sh
 source ${myLocation}/resources/git-completion.bash
 
-export PATH=/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH
-
 export EDITOR='vim'
 
 export CLICOLOR=true
@@ -24,3 +22,5 @@ function mkd() {
 function rso() {
     source ~/.bash_profile
 }
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
