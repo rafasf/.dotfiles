@@ -40,15 +40,15 @@
 case "$TERM" in
     xterm*|rxvt*|screen*)
         ESC="\033"
-        RED="\[$ESC[01;31m\]"
-        LIGHT_RED="\[$ESC[1;31m\]"
-        GREEN="\[$ESC[01;32m\]"
-        LIGHT_GREEN="\[$ESC[1;32m\]"
-        GREY="\[$ESC[0;37m\]"
-        CYAN="\[$ESC[01;36m\]"
-        YELLOW="\[$ESC[0;33m\]"
-        LIGHT_VIOLET="\[$ESC[1;35m\]"
-        RESET="\[$ESC[0m\]"
+        RED="$ESC[01;31m"
+        LIGHT_RED="$ESC[1;31m"
+        GREEN="$ESC[01;32m"
+        LIGHT_GREEN="$ESC[1;32m"
+        GREY="$ESC[0;37m"
+        CYAN="$ESC[01;36m"
+        YELLOW="$ESC[0;33m"
+        LIGHT_VIOLET="$ESC[1;35m"
+        RESET="$ESC[0m"
     ;;
     *)
         ESC=""
