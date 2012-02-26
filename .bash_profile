@@ -34,11 +34,12 @@ function ff() { find_it f "$1"; }
 function fd() { find_it d "$1"; }
 
 function v() {
-    if [[ $1 =~ ^[0-9]+$ ]] && [[ ! -z ${RESULTS[$1]} ]]; then
-        vim ${RESULTS[$1]}
-    else
-        vim $@
+    local result
+    if [[ $1 =~ ^[0-9]+$ ]] && [ ! -z ${RESULTS[$1]} ]; then
+        result=${RESULTS[$1]}
     fi
+
+    vim ${result:-$@}
 }
 
 function mkd() { 
