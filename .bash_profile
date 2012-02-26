@@ -13,6 +13,10 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
 alias g='git'
+alias p='cd ~/Projects'
+alias vi='v'
+alias mv='mv -v'
+alias cp='cp -v'
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
 
