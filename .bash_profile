@@ -15,8 +15,27 @@ export GREP_OPTIONS="--color"
 alias g='git'
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
-alias p='cd ~/Projects'
-alias v='vim'
+
+function find_it() {
+    local count=1
+    local found=$(find . -iname "*$2*" -type "$1")
+    for result in $found; do
+        echo -e "${YELLOW}$count${RESET} $result"
+        RESULTS[$count]=$(pwd)/$result
+        let count=count+1
+    done
+}
+
+function ff() { find_it f "$1"; }
+function fd() { find_it d "$1"; }
+
+function v() {
+    if [[ $1 =~ ^[0-9]+$ ]] && [[ ! -z ${RESULTS[$1]} ]]; then
+        vim ${RESULTS[$1]}
+    else
+        vim $@
+    fi
+}
 
 function mkd() { 
     mkdir -p "$@" && cd "$@" 
