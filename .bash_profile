@@ -23,8 +23,9 @@ alias ll='ls -alh'
 alias mkdir='mkdir -p'
 
 function find_it() {
-    local count=1
-    local found=$(find . -iname "*$2*" -type "$1")
+    local count found
+    count=1
+    found=$(find . -iname "*$2*" -type "$1")
     for result in $found; do
         echo -e "${YELLOW}$count${RESET} $result"
         RESULTS[$count]=$(pwd)/$result
