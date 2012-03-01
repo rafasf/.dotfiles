@@ -15,7 +15,6 @@ export GREP_OPTIONS="--color"
 projets_root="$HOME/Projects"
 
 alias g='git'
-alias p='cd $projets_root/$1'
 alias vi='v'
 alias mv='mv -v'
 alias cp='cp -v'
@@ -53,6 +52,7 @@ function rso() {
     source "$HOME/.bash_profile"
 }
 
+function p() { cd $projets_root/$1; }
 _projects() {
     local cur
     cur=${COMP_WORDS[COMP_CWORD]}
