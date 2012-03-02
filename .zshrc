@@ -28,6 +28,8 @@ export CLICOLOR=1
 export LSCOLORS="ExFxCxDxBxegedadagacad"
 export GREP_OPTIONS="--color=auto"
 
+export EDITOR='vim'
+
 # My project root folder
 projets_root="$HOME/Projects"
 
