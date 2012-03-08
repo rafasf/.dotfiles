@@ -25,7 +25,7 @@ setopt nobeep
 
 # Enable colors
 export CLICOLOR=1
-export LSCOLORS="ExFxCxDxBxegedadagacad"
+#export LSCOLORS="ExFxCxDxBxegedadagacad"
 export GREP_OPTIONS="--color=auto"
 
 export EDITOR='vim'
