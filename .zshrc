@@ -10,6 +10,8 @@ autoload -U colors
 colors
 
 # History sanity
+HISTSIZE=1000
+SAVEHIST=1000
 HISTFILE=$HOME/.history
 setopt append_history
 setopt hist_ignore_dups
