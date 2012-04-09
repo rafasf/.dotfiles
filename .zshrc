@@ -6,6 +6,10 @@ prompt rsf
 autoload -U compinit
 compinit
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+
 autoload -U colors
 colors
 
