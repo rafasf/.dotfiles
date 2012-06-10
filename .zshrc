@@ -45,6 +45,7 @@ alias vi='v'
 alias mv='mv -v'
 alias cp='cp -v'
 alias ll='ls -alh'
+alias sr='screen -r'
 alias mkdir='mkdir -p'
 
 mkd() { mkdir -p "$@" && cd "$@"; }
@@ -76,5 +77,6 @@ v() {
     vim ${result:-$@}
 }
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/usr/local/bin:$PATH
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
