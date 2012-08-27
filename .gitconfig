@@ -16,6 +16,7 @@
     ld = log -p
     last = log -n 1 -p
     amend = commit --amend
+    pull = pull --rebase
 
 [pretty]
     easy = %C(yellow)%h%C(reset) %s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
