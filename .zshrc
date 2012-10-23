@@ -31,7 +31,6 @@ setopt nobeep
 
 # Enable colors
 export CLICOLOR=1
-#export LSCOLORS="ExFxCxDxBxegedadagacad"
 export GREP_OPTIONS="--color=auto"
 
 export EDITOR='vim'
@@ -77,6 +76,8 @@ v() {
     vim ${result:-$@}
 }
 
-PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/r18
+export NODE_PATH=/usr/local/lib/node_modules
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
