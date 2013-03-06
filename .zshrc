@@ -9,6 +9,7 @@ compinit
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
+bindkey '^r' history-incremental-search-backward
 
 autoload -U colors
 colors
@@ -46,6 +47,7 @@ alias cp='cp -v'
 alias ll='ls -alh'
 alias sr='screen -r'
 alias mkdir='mkdir -p'
+alias tmux='tmux -2 -u'
 
 mkd() { mkdir -p "$@" && cd "$@"; }
 rso() { source "$HOME/.zshrc"; }
