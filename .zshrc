@@ -79,7 +79,5 @@ v() {
 }
 
 export PATH=/usr/local/bin:$PATH
-export ANDROID_HOME=/usr/local/Cellar/android-sdk/r18
-export NODE_PATH=/usr/local/lib/node_modules
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+source /opt/boxen/env.sh

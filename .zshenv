@@ -1,4 +1,4 @@
-DOTS=$HOME/dotfiles
+DOTS=$HOME/.dots
 CUSTOM=$DOTS/custom
 
 fpath=($DOTS/resources $fpath)
