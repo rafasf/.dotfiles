@@ -5,6 +5,7 @@
     ui = auto
 
 [alias]
+    aa = add --all
     st = status
     ci = commit
     br = branch
