@@ -1,13 +1,13 @@
-setopt promptsubst
-autoload -U promptinit
-promptinit
-prompt rsf
+#
+setopt prompt_subst
 
-autoload -U compinit
-compinit
+# Modules
+autoload -U colors && colors
+autoload -U compinit && compinit
+autoload -U promptinit && promptinit && prompt rsf
+autoload -U edit-command-line && zle -N edit-command-line
 
-autoload -U edit-command-line
-zle -N edit-command-line
+# Keybindings
 bindkey '^xe' edit-command-line
 bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
@@ -27,9 +27,6 @@ bindkey '^x^r' redisplay
 bindkey '\eb' backward-word
 bindkey '\ef' forward-word
 
-autoload -U colors
-colors
-
 # History sanity
 HISTSIZE=1000
 SAVEHIST=1000
@@ -40,62 +37,46 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt share_history
 
-# cd without cd
-setopt autocd
-
-# No beep
-setopt nobeep
+setopt autocd # cd without cd
+setopt nobeep # No beep
+setopt complete_aliases # don't expand aliases _before_ completion has finished
 
 # Enable colors
 export CLICOLOR=1
-export GREP_OPTIONS="--color=auto"
+export GREP_OPTIONS='--color=auto'
+export LSCOLORS='exfxcxdxbxegedabagacad'
 
+# Terminal basics
+export TERM=xterm-256color
 export EDITOR='vim'
+export LESS='--ignore-case --raw-control-chars'
+export PAGER='less'
 
-# My project root folder
-projets_root="$HOME/Projects"
+export PATH=/usr/local/bin:$PATH
 
 # Few shortcuts
 alias g='git'
-alias vi='v'
+alias vi='vim'
 alias mv='mv -v'
 alias cp='cp -v'
+alias rm='rm -v'
 alias ll='ls -alh'
 alias sr='screen -r'
 alias mkdir='mkdir -p'
 alias tmux='tmux -2 -u'
+alias gw='./gradlew'
 
-mkd() { mkdir -p "$@" && cd "$@"; }
+# Create directory and go to it
+mcd() { mkdir -p "$@" && cd "$@"; }
+
+# Reload zsh configuration
 rso() { source "$HOME/.zshrc"; }
 
+# My project root folder
+projets_root="$HOME/Projects"
+
+# cd straight to projects from anywhere
 p() { cd $projets_root/$1; }
 compctl -/ -W $projets_root p
-
-find_it() {
-    local count found
-    count=1
-    found=($(find . -iname "*$2*" -type "$1"))
-    for result in $found; do
-        echo -e "$fg[yellow]$count$fg[default] $result"
-        RESULTS[$count]=$(pwd)/$result
-        let count=count+1
-    done
-}
-
-ff() { find_it "f" "$1"; }
-fd() { find_it "d" "$1"; }
-
-v() {
-    local result
-    if [[ $1 =~ ^[0-9]+$ ]] && [ ! -z ${RESULTS[$1]} ]; then
-        result=${RESULTS[$1]}
-    fi
-
-    vim ${result:-$@}
-}
-
-pall() { for dir in `ls .`; do (cd $dir && git checkout . && git pull --rebase); done; }
-
-export PATH=/usr/local/bin:$PATH
 
 source /opt/boxen/env.sh
