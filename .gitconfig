@@ -2,30 +2,31 @@
 	name = Rafael Ferreira
 	email = mail
 [color]
-    ui = auto
+  ui = auto
 
 [alias]
-    aa = add --all
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    dc = diff --cached
-    l = log --pretty=easy
-    lg = log --pretty=easy --graph
-    ld = log -p
-    last = log -n 1 -p
-    amend = commit --amend
-    pull = pull --rebase
+  aa = add --all
+  st = status
+  ci = commit -v
+  br = branch
+  co = checkout
+  df = diff
+  dc = diff --cached
+  l = log --pretty=easy
+  lg = log --pretty=easy --graph
+  ld = log -p
+  last = log -n 1 -p
+  amend = commit --amend
+  pull = pull --rebase
 
 [pretty]
-    easy = %C(yellow)%h%C(reset) %s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
+  easy = %C(yellow)%h%C(reset) %s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
 
 [merge]
-    tool = vimdiff
+  tool = vimdiff
 
 [core]
-    excludesfile = ~/.gitignore
-    pager = less -r
-
+  excludesfile = ~/.gitignore
+  pager = less -F -X
+[push]
+  default = simple

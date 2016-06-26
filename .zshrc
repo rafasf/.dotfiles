@@ -51,6 +51,7 @@ export TERM=xterm-256color
 export EDITOR='vim'
 export LESS='--ignore-case --raw-control-chars'
 export PAGER='less'
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 export PATH=/usr/local/bin:$PATH
 
@@ -78,5 +79,3 @@ projets_root="$HOME/Projects"
 # cd straight to projects from anywhere
 p() { cd $projets_root/$1; }
 compctl -/ -W $projets_root p
-
-source /opt/boxen/env.sh
