@@ -28,18 +28,17 @@ bindkey '\eb' backward-word
 bindkey '\ef' forward-word
 
 # History sanity
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=$HOME/.history
-setopt append_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
+HISTSIZE=4096
+SAVEHIST=4096
+HISTFILE=$HOME/.zhistory
 setopt inc_append_history
+setopt hist_ignore_all_dups 
+setopt hist_ignore_space
 setopt share_history
 
-setopt autocd # cd without cd
-setopt nobeep # No beep
-setopt complete_aliases # don't expand aliases _before_ completion has finished
+setopt autocd
+setopt nobeep
+setopt complete_aliases
 
 # Enable colors
 export CLICOLOR=1
