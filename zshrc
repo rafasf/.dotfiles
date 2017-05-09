@@ -32,7 +32,7 @@ HISTSIZE=4096
 SAVEHIST=4096
 HISTFILE=$HOME/.zhistory
 setopt inc_append_history
-setopt hist_ignore_all_dups 
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 
@@ -52,8 +52,6 @@ export LESS='--ignore-case --raw-control-chars'
 export PAGER='less'
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-export PATH=/usr/local/bin:$PATH
-
 # Few shortcuts
 alias g='git'
 alias vi='vim'
@@ -65,6 +63,7 @@ alias sr='screen -r'
 alias mkdir='mkdir -p'
 alias tmux='tmux -2 -u'
 alias gw='./gradlew'
+alias be='bundle exec'
 
 # Create directory and go to it
 mcd() { mkdir -p "$@" && cd "$@"; }
