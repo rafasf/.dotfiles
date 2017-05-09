@@ -77,3 +77,9 @@ projets_root="$HOME/Projects"
 # cd straight to projects from anywhere
 p() { cd $projets_root/$1; }
 compctl -/ -W $projets_root p
+
+# PATH
+export PATH=/usr/local/bin:$PATH
+
+# rbenv
+eval "$(rbenv init - --no-rehash)"
