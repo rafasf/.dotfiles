@@ -16,4 +16,6 @@ alias gw='./gradlew'
 alias be='bundle exec'
 
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo"
 
+alias talisman=${HOME}/.talisman/bin/talisman_darwin_amd64
