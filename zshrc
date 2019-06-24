@@ -11,6 +11,6 @@ source "${DOTS}/zsh/colours.zsh"
 source "${DOTS}/zsh/completion.zsh"
 
 # Homeless modules
-autoload -U promptinit && promptinit && prompt rsf
+autoload -U promptinit && promptinit && prompt pure
 autoload -U edit-command-line && zle -N edit-command-line
 
