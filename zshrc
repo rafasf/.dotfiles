@@ -14,3 +14,10 @@ source "${DOTS}/zsh/completion.zsh"
 autoload -U promptinit && promptinit && prompt pure
 autoload -U edit-command-line && zle -N edit-command-line
 
+# recommended by brew doctor
+export PATH="/usr/local/bin:$PATH"
+
+source /Users/rferreir/.asdf/asdf.sh
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
