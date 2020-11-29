@@ -4,7 +4,7 @@
 export TERM=xterm-256color
 
 export EDITOR='vim'
-export LESS='--ignore-case --RAW-CONTROL-CHARS'
+export LESS='--ignore-case --RAW-CONTROL-CHARS -FX'
 export PAGER='less'
 
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -21,3 +21,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 ## Talisman
 export TALISMAN_HOME=${HOME}/.talisman/bin
+
+export XDG_CONFIG_HOME=${HOME}/.config

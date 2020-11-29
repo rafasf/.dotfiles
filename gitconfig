@@ -20,6 +20,7 @@
   lg = log --pretty=easy --graph
   ld = log -p
   last = log -n 1 -p
+  ri = !$(freb)
 
 [pretty]
   easy = %C(yellow)%h%C(reset) %<(72,trunc)%s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
@@ -36,5 +37,11 @@
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
 
-[init]
-	templatedir = /Users/rferreir/.git-template
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[commit]
+	gpgsign = true

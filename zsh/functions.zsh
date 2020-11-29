@@ -18,3 +18,17 @@ fshow() {
 FZF-EOF"
 }
 
+# Get git commit sha
+fcs() {
+  local commits commit
+
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) \
+    && commit=$(echo "$commits" | fzf --cycle --tac +s +m -e --ansi --reverse) \
+    && echo -n $(echo "$commit" | sed "s/ .*//")
+}
+
+# Select & rebase
+freb() {
+  local commit=$(fcs)
+  [[ -n "$commit" ]] && git rebase -i "$commit"
+}
