@@ -12,7 +12,7 @@ fi
 
 
 # Create basic configuration variables
-DOTS=$HOME/dots
+DOTS=$HOME/.dotfiles
 CUSTOM=$DOTS/custom
 
 fpath=($DOTS/resources $fpath)

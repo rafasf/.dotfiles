@@ -3,7 +3,7 @@
 # Basics
 export TERM=xterm-256color
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export LESS='--ignore-case --RAW-CONTROL-CHARS -FX'
 export PAGER='less'
 
