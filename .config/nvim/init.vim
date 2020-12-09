@@ -201,10 +201,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+
+Plug 'vimwiki/vimwiki'
 
 Plug 'gruvbox-community/gruvbox'
 
@@ -241,6 +242,14 @@ if has('nvim') && !exists('g:fzf_layout')
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
+
+"---
+" vimwiki
+"---
+
+let g:vimwiki_list = [{
+      \ 'path': '~/Documents/vimwiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "---
 " nvim LSP Setting
