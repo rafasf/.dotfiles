@@ -109,8 +109,6 @@ set colorcolumn=80
 " get rid of the silly characters in window separators
 set fillchars=""
 
-" Turn tabs into spaces
-
 " Add ignorance of whitespace to diff
 set diffopt+=iwhite
 
@@ -129,6 +127,9 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+
+" Split below by default
+set splitbelow
 
 "---
 " Mappings
@@ -166,6 +167,20 @@ nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
 " Copy to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
+
+"---
+" terminal
+"---
+
+tnoremap <C-[> <C-\><C-n>
+tnoremap <M-h> <c-\><c-n><c-w>h
+tnoremap <M-j> <c-\><c-n><c-w>j
+tnoremap <M-k> <c-\><c-n><c-w>k
+tnoremap <M-l> <c-\><c-n><c-w>l
+
+augroup myterm | au!
+    au TermOpen * if &buftype ==# 'terminal' | resize 20 | vert resize 50 | endif
+augroup end
 
 "---
 " Plugins
