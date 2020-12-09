@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE init.vim"
+EXCLUDES="README.md resources zsh"
 DOTFILES_DIRS="${HOME}/.dotfiles"
