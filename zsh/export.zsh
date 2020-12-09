@@ -12,7 +12,8 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # Golang
-export GOPATH=$HOME/.go
+export GOPATH=/usr/local/go
+export PATH=$PATH:$GOPATH/bin
 
 ## GPG Agent
 export GPG_TTY="$(tty)"
