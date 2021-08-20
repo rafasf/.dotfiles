@@ -1,6 +1,7 @@
 [user]
   name = Rafael Ferreira
-  email = rafaelsf@gmail.com
+  email = rafa@rafasf.com
+	signingkey = 6637CDA3784FA8D2
 
 [push]
   default = current
@@ -45,3 +46,7 @@
 
 [commit]
 	gpgsign = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main

@@ -10,7 +10,6 @@ alias rm='rm -v'
 alias mkdir='mkdir -p'
 
 alias sr='screen -r'
-alias tmux='tmux -2 -u'
 
 alias gw='./gradlew'
 alias be='bundle exec'
