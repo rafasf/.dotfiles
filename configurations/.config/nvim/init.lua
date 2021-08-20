@@ -7,3 +7,6 @@ require("lsp")
 
 -- Load lualine
 require("lualine").setup()
+
+-- Configure treesitter
+require("treesitter_config")
