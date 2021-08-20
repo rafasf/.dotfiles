@@ -206,16 +206,21 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+
 Plug 'elixir-lang/vim-elixir'
 
+" PlantUML with preview
 Plug 'aklt/plantuml-syntax'
 Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 
+" Visual
 Plug 'gruvbox-community/gruvbox'
-
 Plug 'hoob3rt/lualine.nvim'
 Plug 'ryanoasis/vim-devicons'
+
+" Easier reading
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
