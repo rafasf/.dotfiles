@@ -172,12 +172,18 @@ vnoremap <leader>y "+y
 " netrw
 "---
 
-nmap <silent> <leader>m :Vexplore<CR>
+"nmap <silent> <leader>m :Vexplore<CR>
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+"---
+" Nvim tree
+"---
+nmap <silent> <leader>m :NvimTreeToggle<CR>
+set termguicolors
 
 "---
 " terminal
@@ -217,7 +223,8 @@ Plug 'weirongxu/plantuml-previewer.vim'
 " Visual
 Plug 'gruvbox-community/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Easier reading
 Plug 'Yggdroot/indentLine'
