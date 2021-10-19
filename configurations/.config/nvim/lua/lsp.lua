@@ -75,32 +75,82 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(
   vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Configure language servers
-local simple_languages = {
-  "bashls",
-  "diagnosticls",
-  "html",
-  "jsonls",
-  "rls",
-  "clojure_lsp",
-  "denols",
+lspconfig["bashls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "nodePackages.bash-language-server",
+    "--run",
+    "bash-language-server start"}
 }
 
-for _, language in ipairs(simple_languages) do
-  lspconfig[language].setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
-end
+lspconfig["diagnosticls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "nodePackages.diagnostic-languageserver",
+    "--run",
+    "diagnostic-languageserver --stdio"}
+}
 
-lspconfig["elixirls"].setup {
-  cmd = {"/Users/rafa/Downloads/elixir-ls/language_server.sh"},
-  settings = {
-    elixirLS = {
-      dialyzerEnabled = false,
-      fetchDeps = false
-    }
-  }
+lspconfig["html"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "nodePackages.vscode-html-languageserver-bin",
+    "--run",
+    "vscode-html-language-server --stdio"}
+}
+
+lspconfig["jsonls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "nodePackages.vscode-json-languageserver-bin",
+    "--run",
+    "vscode-json-language-server --stdio"}
+}
+
+lspconfig["rls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "rust-analyzer",
+    "--run",
+    "rls"}
+}
+
+lspconfig["clojure_lsp"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "clojure-lsp",
+    "--run",
+    "clojure-lsp"}
+}
+
+lspconfig["tsserver"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "nix-shell",
+    "-p",
+    "nodePackages.typescript",
+    "nodePackages.typescript-language-server",
+    "--run",
+    "typescript-language-server --stdio"}
 }
 
 -- The following settings works with the bleeding edge neovim.
