@@ -1,7 +1,7 @@
 [user]
   name = Rafael Ferreira
-  email = rafa@rafasf.com
-	signingkey = 6637CDA3784FA8D2
+  email = setme
+  signingkey = 6637CDA3784FA8D2
 
 [push]
   default = current
@@ -35,18 +35,39 @@
   autocrlf = input
 
 [pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = delta
+  show = delta
 
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
 
 [commit]
-	gpgsign = true
+  gpgsign = true
+
 [pull]
-	rebase = true
+  rebase = true
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features = decorations
+  line-numbers = true
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+
