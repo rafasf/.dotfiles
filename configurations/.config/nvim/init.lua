@@ -1,4 +1,6 @@
 --
+require("rafa.basic")
+
 -- Load classic config
 vim.cmd("source ~/.config/nvim/vimrc")
 
