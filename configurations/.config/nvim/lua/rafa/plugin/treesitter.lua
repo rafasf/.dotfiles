@@ -1,6 +1,11 @@
-require("nvim-treesitter.configs").setup {
+local M = {}
+
+M.configure = require("nvim-treesitter.configs").setup {
   highlight = { enable = true },
   incremental_selection = { enable = true },
   indent = { enable = true },
   rainbow = { enable = true },
 }
+
+return M
+

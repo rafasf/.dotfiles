@@ -17,6 +17,3 @@ nnoremap("<leader>l", ":wincmd l<CR>")
 nnoremap("^", ":setl hls<CR>:let @/=\"<C-r><C-w>\"<CR>")
 
 nnoremap("<leader>m", ":NvimTreeToggle<CR>")
-
-nnoremap("<leader>t", ":Files<CR>")
-nnoremap("<leader>b", ":Buffers<CR>")
