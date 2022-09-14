@@ -1,5 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
+vim.lsp.set_log_level("debug")
 return require("packer").startup(function(use)
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
@@ -30,22 +31,30 @@ return require("packer").startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     })
     
+
+    -- LSP completion
+    use({
+        "hrsh7th/nvim-cmp",
+        config = require("rafa.plugin.cmp").configure,
+        requires = {
+            -- LSP snip
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+        }
+    })
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+
     -- LSP
     use({
         "neovim/nvim-lspconfig",
         config = require("rafa.plugin.lsp").configure,
         requires = {
-            -- LSP completion
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/nvim-cmp",
-        },
+            "hrsh7th/cmp-nvim-lsp"
+        }
     })
-
-    -- LSP snip
-    use "hrsh7th/cmp-vsnip"
-    use "hrsh7th/vim-vsnip"
-    use "hrsh7th/vim-vsnip-integ"
 
     -- Help with LSP diagnostics, code actions
     use({
@@ -62,6 +71,11 @@ return require("packer").startup(function(use)
     use({
         "nvim-lualine/lualine.nvim",
         config = function() require("lualine").setup() end,
+    })
+
+    use({
+        "folke/zen-mode.nvim",
+        config = function() require("zen-mode").setup() end
     })
 
     -- Easier reading

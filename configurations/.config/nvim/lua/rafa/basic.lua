@@ -23,5 +23,6 @@ vim.opt.writebackup = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.wildignore = { "*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules" }
+vim.opt.wildignore = {"*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules"}
 
+vim.opt.completeopt = {"menu", "menuone", "noselect"}
