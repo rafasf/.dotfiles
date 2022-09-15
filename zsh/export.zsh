@@ -9,7 +9,12 @@ export PAGER='less'
 
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+export CLICOLOR=1
+
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git";
+
 export XDG_CONFIG_HOME=${HOME}/.config
+#export XDG_DATA_HOME=${HOME}/.local
 
 # Golang
 export GOPATH=/usr/local/go
