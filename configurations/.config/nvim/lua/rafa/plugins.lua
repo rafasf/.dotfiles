@@ -1,6 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
 
-vim.lsp.set_log_level("debug")
 return require("packer").startup(function(use)
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
