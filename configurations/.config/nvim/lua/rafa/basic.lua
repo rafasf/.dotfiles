@@ -26,3 +26,6 @@ vim.opt.incsearch = true
 vim.opt.wildignore = {"*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules"}
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
+
+vim.opt.list = true
+vim.opt.listchars:append "eol:↴"

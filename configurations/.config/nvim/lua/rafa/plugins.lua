@@ -74,11 +74,21 @@ return require("packer").startup(function(use)
 
     use({
         "folke/zen-mode.nvim",
-        config = function() require("zen-mode").setup() end
+        config = function() require("zen-mode").setup {
+            kitty = {
+              enabled = true,
+              font = "+4", -- font size increment
+            },
+        } end
     })
 
     -- Easier reading
-    use "Yggdroot/indentLine"
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        config = function() require("indent_blankline").setup {
+            vim.cmd [[highlight IndentBlanklineChar guifg=#E5C07B gui=nocombine]]
+        } end
+    })
 
     -- Completing a few things
     use "mattn/emmet-vim"
