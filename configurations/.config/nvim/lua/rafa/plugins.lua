@@ -5,7 +5,7 @@ return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
     -- The theme (configured on after/plugin/colour.lua)
-    use "gruvbox-community/gruvbox"
+    use "ellisonleao/gruvbox.nvim"
 
     -- Parsing
     use { 
