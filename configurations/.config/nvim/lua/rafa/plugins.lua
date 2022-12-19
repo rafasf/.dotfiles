@@ -53,16 +53,6 @@ return require("packer").startup(function(use)
         }
     }
 
-    -- Help with LSP diagnostics, code actions
-    -- use({
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     config = require("rafa.plugin.null_ls").configure,
-    --     requires = { "nvim-lua/plenary.nvim" },
-    -- })
-
-    -- Languages syntax highlight
-    use "fatih/vim-go"
-    use "LnL7/vim-nix"
 
     -- Visuals
     use({

@@ -13,6 +13,14 @@ lsp.ensure_installed({
     "rust_analyzer",
 })
 
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
