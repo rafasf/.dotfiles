@@ -31,36 +31,34 @@ return require("packer").startup(function(use)
     })
     
 
-    -- LSP completion
-    use({
-        "hrsh7th/nvim-cmp",
-        config = require("rafa.plugin.cmp").configure,
+    use {
+        'VonHeikemen/lsp-zero.nvim',
         requires = {
-            -- LSP snip
-            "saadparwaiz1/cmp_luasnip",
-            "L3MON4D3/LuaSnip",
-        }
-    })
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-cmdline"
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
 
-    -- LSP
-    use({
-        "neovim/nvim-lspconfig",
-        config = require("rafa.plugin.lsp").configure,
-        requires = {
-            "hrsh7th/cmp-nvim-lsp"
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
+
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
         }
-    })
+    }
 
     -- Help with LSP diagnostics, code actions
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        config = require("rafa.plugin.null_ls").configure,
-        requires = { "nvim-lua/plenary.nvim" },
-    })
+    -- use({
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     config = require("rafa.plugin.null_ls").configure,
+    --     requires = { "nvim-lua/plenary.nvim" },
+    -- })
 
     -- Languages syntax highlight
     use "fatih/vim-go"
