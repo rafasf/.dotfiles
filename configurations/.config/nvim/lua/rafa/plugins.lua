@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
 
     use({
         "ibhagwan/fzf-lua",
-        config = require("rafa.plugin.fzf").configure,
+        config = require("fzf-lua").setup({"fzf-native"}),
         requires = { "kyazdani42/nvim-web-devicons" },
     })
     
