@@ -8,8 +8,7 @@ lsp.ensure_installed({
     "html",
     "jsonls",
     "gopls",
-    "remark_ls",
-    "sumneko_lua",
+    "lua_ls",
     "rust_analyzer",
 })
 
