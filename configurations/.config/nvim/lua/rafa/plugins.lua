@@ -6,6 +6,7 @@ return require("packer").startup(function(use)
 
     -- The theme (configured on after/plugin/colour.lua)
     use "ellisonleao/gruvbox.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Parsing
     use { 
