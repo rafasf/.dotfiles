@@ -25,13 +25,6 @@ return require("packer").startup(function(use)
         end
     })
 
-    use({
-        "ibhagwan/fzf-lua",
-        config = require("fzf-lua").setup({"fzf-native"}),
-        requires = { "kyazdani42/nvim-web-devicons" },
-    })
-    
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -81,4 +74,23 @@ return require("packer").startup(function(use)
 
     -- Completing a few things
     use "mattn/emmet-vim"
+
+    use {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-tree/nvim-web-devicons"},
+            {"nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+        },
+        config = function() require("telescope").setup{
+            extensions = {
+                fzf = {
+                    fuzzy = true,
+                    override_generic_sorter = true,
+                    override_file_sorter = true,
+                }
+            }
+        } end
+    }
 end)
