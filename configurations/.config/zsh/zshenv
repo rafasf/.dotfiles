@@ -14,6 +14,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 DOTS=$HOME/.dotfiles
 CUSTOM=$DOTS/custom
 
+# Set configuration variables for applications to use XDG
+source $DOTS/zsh/config_dirs.zsh
+
 # Load custom shell scripts
 if [[ -d "$CUSTOM" ]]; then
     for custom_file ($CUSTOM/*.zsh) source $custom_file
