@@ -8,5 +8,4 @@ setopt hist_ignore_space
 
 HISTSIZE=4096
 SAVEHIST=4096
-HISTFILE=$HOME/.zhistory
 
