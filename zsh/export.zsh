@@ -13,9 +13,7 @@ export CLICOLOR=1
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git";
 
-export XDG_CONFIG_HOME=${HOME}/.config
-
 ## GPG Agent
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+#export GPG_TTY="$(tty)"
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
