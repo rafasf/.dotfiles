@@ -1,4 +1,4 @@
-#
+# Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
@@ -20,7 +20,7 @@ autoload -U edit-command-line && zle -N edit-command-line
 # Load key tooling
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$VOLTA_HOME/bin:$PATH"
