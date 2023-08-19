@@ -40,7 +40,6 @@ lsp.setup()
 
 require("mason-null-ls").setup({
     ensure_installed = {
-        "dprint",
         "prettier"
     },
     automatic_installation = false,
