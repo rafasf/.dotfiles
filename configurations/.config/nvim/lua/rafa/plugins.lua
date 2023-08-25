@@ -93,6 +93,12 @@ return require("packer").startup(function(use)
         },
         config = function()
             require("telescope").setup {
+                pickers = {
+                    find_files = {
+                        theme = "dropdown",
+                        previewer = false
+                    }
+                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
