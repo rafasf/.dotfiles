@@ -1,15 +1,19 @@
 local M = {}
 
 M.configure = require("nvim-treesitter.configs").setup {
-  highlight = { enable = true },
-  incremental_selection = { enable = true },
-  indent = { enable = true },
-  rainbow = { enable = true },
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false
+    },
+    incremental_selection = { enable = true },
+    indent = { enable = true },
+    rainbow = { enable = true },
     ensure_installed = {
         "astro",
         "help",
         "javascript",
-        "json", 
+        "html",
+        "json",
         "lua",
         "make",
         "markdown",
@@ -19,4 +23,3 @@ M.configure = require("nvim-treesitter.configs").setup {
 }
 
 return M
-

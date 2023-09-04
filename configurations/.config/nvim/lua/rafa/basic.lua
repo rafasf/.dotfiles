@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.wo.wrap = false
 vim.wo.linebreak = false
 vim.wo.list = false
@@ -23,9 +27,9 @@ vim.opt.writebackup = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.wildignore = {"*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules"}
+vim.opt.wildignore = { "*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules" }
 
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"

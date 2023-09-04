@@ -4,13 +4,12 @@ return require("packer").startup(function(use)
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
-    -- The theme (configured on after/plugin/colour.lua)
-    use "ellisonleao/gruvbox.nvim"
+    -- Looks
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Parsing
-    use { 
-        "nvim-treesitter/nvim-treesitter", 
+    use {
+        "nvim-treesitter/nvim-treesitter",
         config = require("rafa.plugin.treesitter").configure,
         run = function()
             require("nvim-treesitter.install").update({ with_sync = true })
@@ -25,6 +24,7 @@ return require("packer").startup(function(use)
         end
     })
 
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -49,8 +49,22 @@ return require("packer").startup(function(use)
         }
     }
 
-    use "mfussenegger/nvim-jdtls"
-    use "wuelnerdotexe/vim-astro"
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                panel = {
+                    enabled = true,
+                    auto_refresh = true,
+                    layout = {
+                        position = "right"
+                    }
+                }
+            })
+        end,
+    }
 
     -- Visuals
     use({
@@ -58,31 +72,15 @@ return require("packer").startup(function(use)
         config = function() require("lualine").setup() end,
     })
 
-    use({
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {
-                kitty = {
-                    enabled = true,
-                    font = "+4", -- font size increment
-                },
-            }
-        end
-    })
-
     -- Easier reading
     use({
         "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("indent_blankline").setup {
-                vim.cmd [[highlight IndentBlanklineChar guifg=#E5C07B gui=nocombine]]
-            }
-        end
     })
 
-    -- Completing a few things
-    use "mattn/emmet-vim"
+    -- Syntax
+    use "wuelnerdotexe/vim-astro"
 
+    -- Finding things
     use {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
