@@ -37,16 +37,3 @@ cmp.setup({
 })
 
 lsp.setup()
-
-require("mason-null-ls").setup({
-    ensure_installed = {
-        "prettier"
-    },
-    automatic_installation = false,
-    handlers = {},
-})
-require("null-ls").setup({
-    sources = {
-        -- Anything not supported by mason.
-    }
-})
