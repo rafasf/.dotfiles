@@ -18,6 +18,7 @@ source "${DOTS}/zsh/completion.zsh"
 autoload -U edit-command-line && zle -N edit-command-line
 
 # Load key tooling
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"

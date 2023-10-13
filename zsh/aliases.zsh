@@ -8,6 +8,7 @@ alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -v'
 alias mkdir='mkdir -p'
+alias cat='bat'
 
 alias sr='screen -r'
 
