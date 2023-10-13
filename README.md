@@ -2,12 +2,33 @@
 
 ## Manual Steps
 
-```bash
+1. Install `brew`:
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. Install `stow`:
+
+```sh
 brew install stow
+```
+
+3. Clone the repository:
+
+```sh
+git clone https://github.com/rafasf/dots.git ~/.dotfiles
+```
+
+4. Link configurations:
+
+```sh
 cd ~/.dotfiles && make
 ```
 
-```bash
-sh -c "curl -fLo ${XDG_CONFIG_HOME}/nvim/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+5. Open a new shell (there will some errors due missing tools)
+6. Install essential tools:
+
+```sh
+brew bundle install --file=${DOTS}/Brewfile
 ```
