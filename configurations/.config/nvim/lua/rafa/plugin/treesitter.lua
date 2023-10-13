@@ -10,7 +10,6 @@ M.configure = require("nvim-treesitter.configs").setup {
     rainbow = { enable = true },
     ensure_installed = {
         "astro",
-        "help",
         "javascript",
         "html",
         "json",
