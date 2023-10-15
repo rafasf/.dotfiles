@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -46,6 +47,8 @@ return require("packer").startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    use { "mhartington/formatter.nvim" }
 
     use {
         "zbirenbaum/copilot.lua",
@@ -93,7 +96,11 @@ return require("packer").startup(function(use)
                     find_files = {
                         theme = "dropdown",
                         previewer = false
-                    }
+                    },
+                    buffers = {
+                        theme = "dropdown",
+                        previewer = false
+                    },
                 },
                 extensions = {
                     fzf = {
