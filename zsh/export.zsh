@@ -4,10 +4,10 @@
 export TERM=xterm-256color
 
 export EDITOR='nvim'
-export LESS='--ignore-case --RAW-CONTROL-CHARS -FX'
+export LESS='--ignore-case --RAW-CONTROL-CHARS'
 export PAGER='less'
 
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?[]~=&;!#$%^(){}<>'
 
 export CLICOLOR=1
 
