@@ -1,3 +1,5 @@
 autoload
 plugged
 configurations/.config/nvim/plugin/
+configurations/.config/tmux/plugins/
+
