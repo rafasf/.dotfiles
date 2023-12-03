@@ -9,18 +9,14 @@
   ui = auto
 
 [alias]
-  aa = add --all
   st = status
-  ci = commit -v
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-  co = checkout
   df = diff
   dc = diff --cached
   l = log --pretty=easy
   lg = log --pretty=easy --graph
   ld = log -p
   last = log -n 1 -p
-  ri = !$(freb)
 
 [pretty]
   easy = %C(yellow)%h%C(reset) %<(72,trunc)%s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
@@ -71,6 +67,7 @@
 [delta]
   features = decorations
   line-numbers = true
+  navigate = true
 
 [delta "interactive"]
   keep-plus-minus-markers = false
