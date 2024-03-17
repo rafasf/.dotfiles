@@ -3,9 +3,9 @@ return {
   lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local conform = require "conform"
+    local conform = require("conform")
 
-    conform.setup {
+    conform.setup({
       formatters_by_ft = {
         sh = { "shfmt" },
         javascript = { "prettier" },
@@ -14,6 +14,7 @@ return {
         typescriptreact = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
+        svg = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
@@ -24,6 +25,6 @@ return {
         async = false,
         timeout_ms = 1000,
       },
-    }
+    })
   end,
 }

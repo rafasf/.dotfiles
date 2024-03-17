@@ -10,6 +10,7 @@ return {
     { "saadparwaiz1/cmp_luasnip" },
     { "rafamadriz/friendly-snippets" },
     { "onsails/lspkind.nvim" },
+    { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
     local lsp_zero = require("lsp-zero")
@@ -47,7 +48,7 @@ return {
 
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,noinsert",
       },
       snippet = {
         expand = function(args)
@@ -58,6 +59,7 @@ return {
         { name = "path" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
+        { name = "luasnip" },
       },
       formatting = {
         format = lspkind.cmp_format({
@@ -66,13 +68,13 @@ return {
         }),
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-Space>"] = cmp.mapping.complete({}),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
       }),
     })
   end,
