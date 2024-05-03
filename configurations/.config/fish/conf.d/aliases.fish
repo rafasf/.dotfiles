@@ -1,11 +1,9 @@
 alias g "git"
 
+alias v "vim"
 alias vi "vim"
 alias vim "nvim"
 
-alias mv "mv -v"
-alias cp "cp -v"
-alias rm "rm -v"
 alias mkdir "mkdir -p"
 alias cat "bat"
 
