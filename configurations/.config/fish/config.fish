@@ -18,7 +18,7 @@ if test -d "/opt/homebrew"
 end
 
 # Bootstrap day-to-day tools
-if type -q startship
+if type -q starship
     starship init fish | source
 end
 
