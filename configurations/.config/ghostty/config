@@ -1,14 +1,22 @@
+# vim: ft=conf
+
 font-family = JetBrains Mono NL
 font-size = 15
 
-#background-opacity = 0.95
-#background-blur-radius = 20
+background-opacity = 0.97
+background-blur-radius = 20
 
-window-decoration = false
+#window-decoration = false
 window-padding-y = 10
 window-padding-x = 10
 
 macos-option-as-alt = true
+macos-titlebar-style = tabs
 
-# Theme: catppuccin-frappe
 theme = catppuccin-frappe
+
+keybind = cmd+shift+l=resize_split:right,20
+keybind = cmd+shift+h=resize_split:left,20
+keybind = cmd+shift+k=resize_split:up,20
+keybind = cmd+shift+j=resize_split:down,20
+keybind = cmd+shift+e=equalize_splits
