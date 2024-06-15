@@ -9,7 +9,6 @@ return {
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
     { "rafamadriz/friendly-snippets" },
-    { "onsails/lspkind.nvim" },
     { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
@@ -23,7 +22,6 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "tsserver",
-        "eslint",
         "html",
         "jsonls",
         "gopls",
@@ -42,13 +40,13 @@ return {
 
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    local lspkind = require("lspkind")
+    local cmp_format = require("lsp-zero").cmp_format({ details = true })
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,noinsert",
+        completeopt = "menu,menuone,noselect",
       },
       snippet = {
         expand = function(args)
@@ -56,25 +54,26 @@ return {
         end,
       },
       sources = {
-        { name = "path" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
       },
-      formatting = {
-        format = lspkind.cmp_format({
-          maxwidth = 50,
-          ellipsis_char = "...",
-        }),
+      {
+        { name = "path" },
+        { name = "buffer" },
       },
+      format = cmp_format,
       mapping = cmp.mapping.preset.insert({
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete({}),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-y>"] = cmp.mapping(
+          cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          }),
+          { "i", "c" }
+        ),
+        ["<C-Space>"] = cmp.mapping.complete(),
       }),
     })
   end,

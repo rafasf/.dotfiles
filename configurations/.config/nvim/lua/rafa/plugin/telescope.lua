@@ -42,11 +42,7 @@ return {
     pcall(require("telescope").load_extension, "ui-select")
 
     local builtin = require("telescope.builtin")
-    nnoremap(
-      "<leader>sf",
-      "<cmd>Telescope find_files find_command=fd,--type,f,--hidden,--exclude,.git<cr>",
-      { desc = "[S]earch [F]iles" }
-    )
+    nnoremap("<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     nnoremap("<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
     nnoremap("<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
     nnoremap("<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
