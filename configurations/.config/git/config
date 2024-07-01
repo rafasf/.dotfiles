@@ -61,9 +61,6 @@
 [interactive]
   diffFilter = delta --color-only --features=interactive
 
-[add.interactive]
-    useBuiltin = false
-
 [delta]
   features = decorations
   line-numbers = true

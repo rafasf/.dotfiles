@@ -3,7 +3,7 @@
 font-family = JetBrains Mono NL
 font-size = 15
 
-background-opacity = 0.97
+background-opacity = 0.96
 background-blur-radius = 20
 
 #window-decoration = false
@@ -12,6 +12,8 @@ window-padding-x = 10
 
 macos-option-as-alt = true
 macos-titlebar-style = tabs
+
+copy-on-select = clipboard
 
 theme = catppuccin-frappe
 
