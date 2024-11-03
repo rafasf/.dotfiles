@@ -29,6 +29,10 @@ vim.opt.wildignore = { "*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modul
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.list = true
-vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append("eol:↴")
 
 vim.opt.termguicolors = true
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
