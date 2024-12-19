@@ -1,4 +1,3 @@
--- disable netrw at the very start of your init.lua
 vim.wo.wrap = false
 vim.wo.linebreak = false
 vim.wo.list = false
@@ -6,9 +5,12 @@ vim.wo.list = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.signcolumn = "yes"
+
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.breakindent = true
 
 vim.opt.textwidth = 80
 vim.wo.colorcolumn = "+1"
@@ -26,12 +28,12 @@ vim.opt.incsearch = true
 
 vim.opt.wildignore = { "*.o", "*.a", "*.so", "*.swp", "__pycache__", "node_modules" }
 
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 
 vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 10
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

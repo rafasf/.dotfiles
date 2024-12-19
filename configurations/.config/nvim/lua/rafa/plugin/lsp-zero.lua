@@ -21,7 +21,6 @@ return {
     require("mason").setup({})
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "tsserver",
         "html",
         "jsonls",
         "gopls",
@@ -46,7 +45,7 @@ return {
 
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,noselect",
+        completeopt = "menu,menuone,noinsert",
       },
       snippet = {
         expand = function(args)
@@ -57,23 +56,31 @@ return {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
-      },
-      {
         { name = "path" },
         { name = "buffer" },
       },
       format = cmp_format,
       mapping = cmp.mapping.preset.insert({
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-y>"] = cmp.mapping(
-          cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-          }),
-          { "i", "c" }
-        ),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
         ["<C-Space>"] = cmp.mapping.complete(),
+
+        ["<C-l>"] = cmp.mapping(function()
+          if luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+          end
+        end, { "i", "s" }),
+        ["<C-h>"] = cmp.mapping(function()
+          if luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          end
+        end, { "i", "s" }),
       }),
     })
   end,
