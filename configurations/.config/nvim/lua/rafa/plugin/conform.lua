@@ -8,10 +8,10 @@ return {
     conform.setup({
       formatters_by_ft = {
         sh = { "shfmt" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
+        javascript = { "prettier", "deno_fmt" },
+        typescript = { "prettier", "deno_fmt" },
+        javascriptreact = { "prettier", "deno_fmt" },
+        typescriptreact = { "prettier", "deno_fmt" },
         css = { "prettier" },
         html = { "prettier" },
         svg = { "prettier" },
