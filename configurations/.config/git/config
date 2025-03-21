@@ -55,7 +55,6 @@
 
 [commit]
   gpgsign = true
-	template = /Users/rafa/.gitmessage
 
 [pull]
   rebase = true
@@ -71,6 +70,3 @@
 
 [includeIf "gitdir:~/Projects/tw/"]
     path = ~/Projects/tw/.gitconfig
-
-[includeIf "gitdir:~/Projects/sp/"]
-    path = ~/Projects/sp/.gitconfig
