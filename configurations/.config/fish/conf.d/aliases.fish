@@ -14,7 +14,3 @@ alias ls "eza --icons --group-directories-first"
 alias ll "eza -l -g --icons"
 alias lla "eza -l -g -a --icons"
 alias tree "eza --tree"
-
-alias uuid "uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo"
-
-alias ns "nix-shell --run fish"
