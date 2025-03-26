@@ -1,7 +1,0 @@
-export CARGO_HOME=$XDG_DATA_HOME/cargo
-export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
-export GNUPGHOME=$XDG_DATA_HOME/gnupg
-export GOPATH=$XDG_DATA_HOME/go
-export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
-export LESSHISTFILE=$XDG_CACHE_HOME/less/history
-export VOLTA_HOME=$XDG_DATA_HOME/volta
