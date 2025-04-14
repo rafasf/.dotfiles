@@ -26,3 +26,8 @@ end
 if type -q fzf
     fzf --fish | source
 end
+
+if test -e $XDG_CONFIG_HOME/xdgdirs/xdgdirs.fish
+    source $XDG_CONFIG_HOME/xdgdirs/xdgdirs.fish
+end
+ 
