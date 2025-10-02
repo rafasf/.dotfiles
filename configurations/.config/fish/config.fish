@@ -1,10 +1,8 @@
-if test -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish"
-    source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish"
-end
-
 set fish_greeting ""
 
 set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx MANPAGER 'nvim +Man!'
 
 # Bootstrap day-to-day tools
 if type -q /opt/homebrew/bin/brew

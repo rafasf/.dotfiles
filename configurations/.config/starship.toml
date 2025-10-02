@@ -1,5 +1,19 @@
-[package]
-disabled = true
+"$schema" = 'https://starship.rs/config-schema.json'
 
-[directory]
-truncation_length = 1
+format = """
+$kubernetes\
+$directory\
+$git_branch\
+$docker_context\
+$aws\
+$gcloud\
+$mise\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$status\
+$os\
+$container\
+$shell\
+$character"""

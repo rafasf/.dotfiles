@@ -1,6 +1,7 @@
 # vim: ft=conf
 
 font-size = 15
+font-feature = -calt, -liga, -dlig
 
 background-opacity = 0.96
 background-blur-radius = 20
@@ -14,7 +15,7 @@ macos-titlebar-style = tabs
 
 copy-on-select = clipboard
 
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
 
 keybind = cmd+shift+l=resize_split:right,20
 keybind = cmd+shift+h=resize_split:left,20
