@@ -5,7 +5,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
+      -- "nvim-tree/nvim-web-devicons",
     },
     keys = {
       { "\\", ":Neotree reveal<cr>", desc = "NeoTree reveal", silent = true },

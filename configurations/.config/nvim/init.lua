@@ -1,4 +1,4 @@
 --
-require("rafa.basic")
-require("rafa.keymap")
-require("rafa.plugins")
+require("basic")
+require("keymap")
+require("plugins")

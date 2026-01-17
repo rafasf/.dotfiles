@@ -1,13 +1,7 @@
-local nnoremap = require("rafa.keybind").nnoremap
-local vnoremap = require("rafa.keybind").vnoremap
-
 vim.g.mapleader = ","
 
-nnoremap("<leader>y", '"+y')
-vnoremap("<leader>y", '"+y')
-
-nnoremap("<leader>n", ":set invhls<CR>:set hls?<CR>")
-nnoremap("^", ':setl hls<CR>:let @/="<C-r><C-w>"<CR>')
+vim.keymap.set("n", "<leader>n", ":set invhls<CR>:set hls?<CR>", { desc = "Toggle search highlight" })
+vim.keymap.set("n", "^", ':setl hls<CR>:let @/="<C-r><C-w>"<CR>', { desc = "Highlight word under cursor" })
 
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
