@@ -1,4 +1,4 @@
-function mkdircd -d "Create a new directory and cd into it"
+function mkdcd -d "Create a new directory and cd into it"
     mkdir -p -- $argv
     if test $status = 0
         cd $argv

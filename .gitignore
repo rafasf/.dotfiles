@@ -7,4 +7,6 @@ configurations/.config/tmux/plugins/
 .zcompdump
 .zsh_history
 
+configurations/.config/fish/conf.d/local/
+
 

@@ -25,6 +25,5 @@ if type -q fzf
     fzf --fish | source
 end
 
-
-# Added by Antigravity
-fish_add_path /Users/r/.antigravity/antigravity/bin
+# Ctrl+Z toggles between foreground and background (great for nvim)
+bind \cz 'fg 2>/dev/null; commandline -f repaint'
