@@ -18,10 +18,11 @@ return {
     conform.setup({
       formatters_by_ft = {
         sh = { "shfmt" },
-        javascript = { "prettier", "deno_fmt" },
-        typescript = { "prettier", "deno_fmt" },
-        javascriptreact = { "prettier", "deno_fmt" },
-        typescriptreact = { "prettier", "deno_fmt" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        astro = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
         svg = { "prettier" },
@@ -30,6 +31,10 @@ return {
         markdown = { "prettier" },
         lua = { "stylua" },
         ruby = { "rubocop" },
+        go = { "gofmt" },
+        rust = { "rustfmt" },
+        ocaml = { "ocamlformat" },
+        templ = { "templ" },
       },
       format_on_save = {
         lsp_fallback = true,

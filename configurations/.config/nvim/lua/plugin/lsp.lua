@@ -1,4 +1,3 @@
--- Config based on https://github.com/nvim-lua/kickstart.nvim
 return {
   {
     "folke/lazydev.nvim",
@@ -11,12 +10,10 @@ return {
   },
   { "Bilal2453/luvit-meta", lazy = true },
   {
-    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
     dependencies = {
-      { "williamboman/mason.nvim", config = true },
-      { "williamboman/mason-lspconfig.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
-      { "j-hui/fidget.nvim", opts = {} },
+      { "williamboman/mason-lspconfig.nvim" },
       { "saghen/blink.cmp" },
     },
     config = function()
@@ -49,36 +46,49 @@ return {
         end,
       })
 
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      })
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-              diagnostics = { disable = { "missing-fields" } },
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
             },
+            diagnostics = { disable = { "missing-fields" } },
           },
         },
-      }
+      })
 
       require("mason").setup()
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        "stylua",
-      })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
+      require("mason-lspconfig").setup({ automatic_enable = true })
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          -- LSP
+          "lua-language-server",
+          "bash-language-server",
+          "gopls",
+          "rust-analyzer",
+          "astro-language-server",
+          "clojure-lsp",
+          "elixir-ls",
+          "html-lsp",
+          "json-lsp",
+          "marksman",
+          "ocaml-lsp",
+          "ruby-lsp",
+          "tinymist",
+          "vtsls",
+          -- Linters
+          "eslint_d",
+          -- Formatters
+          "stylua",
+          "shfmt",
+          "prettier",
+          "ocamlformat",
+          "templ",
+          "rubocop",
         },
       })
     end,
