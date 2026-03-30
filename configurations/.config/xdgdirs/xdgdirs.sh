@@ -1,11 +1,8 @@
-config_file=${XDG_CONFIG_HOME}/xdgdirs/xdg-dirs
+_xdg_file="$HOME/.config/xdgdirs/xdg-dirs"
 
-while read -r line || [[ -n "$line" ]]; do
-    valid_line="${line#"${line%%[![:space:]]*}"}"
-    valid_line="${valid_line%"${valid_line##*[![:space:]]}"}"
-    
-    [[ -z "$valid_line" || "$valid_line" =~ ^# ]] && continue
-    
-    eval "export $valid_line"
-done < ${XDG_CONFIG_HOME}/xdgdirs/xdg-dirs
+while IFS= read -r line || [ -n "$line" ]; do
+    case "$line" in ''|'#'*) continue ;; esac
+    eval "export $line"
+done < "$_xdg_file"
 
+unset _xdg_file

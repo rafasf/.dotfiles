@@ -1,4 +1,4 @@
-set config_file "$XDG_CONFIG_HOME/xdgdirs/xdg-dirs"
+set _xdg_file "$HOME/.config/xdgdirs/xdg-dirs"
 
 while read -l line
     set trimmed (string trim "$line")
@@ -7,11 +7,7 @@ while read -l line
     end
 
     set var (string split -m1 = "$line")
-    set var_name $var[1]
-    set var_value (string trim -c '"' $var[2])
+    set -gx $var[1] (eval echo (string trim -c '"' $var[2]))
+end < $_xdg_file
 
-    set resolved_value (eval echo $var_value)
-
-    set -gx $var_name "$resolved_value"
-end < $config_file
-
+set -e _xdg_file
