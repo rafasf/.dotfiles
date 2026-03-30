@@ -1,6 +1,21 @@
 # dotfiles
 
-## Manual Steps
+Manages configurations for fish, neovim, tmux, ghostty, starship, yazi, bat,
+and other tools using [GNU Stow](https://www.gnu.org/software/stow/).
+
+## Structure
+
+```
+configurations/
+  .config/        # XDG config dirs (fish, nvim, tmux, ghostty, ...)
+  .bashrc
+  .profile
+  .zshenv
+Brewfile          # Homebrew dependencies
+Makefile          # stow wrapper
+```
+
+## Setup
 
 1. Install `brew`:
 
@@ -17,7 +32,7 @@ brew install stow
 3. Clone the repository:
 
 ```sh
-git clone https://github.com/rafasf/dots.git ~/.dotfiles
+git clone git@github.com:rafasf/dots.git ~/.dotfiles
 ```
 
 4. Link configurations:
@@ -26,9 +41,10 @@ git clone https://github.com/rafasf/dots.git ~/.dotfiles
 cd ~/.dotfiles && make
 ```
 
-5. Open a new shell (there will some errors due missing tools)
-6. Install essential tools:
+5. Install tools:
 
 ```sh
-brew bundle install --file=${DOTS}/Brewfile
+brew bundle install --file=~/.dotfiles/Brewfile
 ```
+
+6. Open a new shell
