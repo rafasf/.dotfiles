@@ -8,5 +8,6 @@ configurations/.config/tmux/plugins/
 .zsh_history
 
 configurations/.config/fish/conf.d/local/
+configurations/.config/fish/completions/
 
 
