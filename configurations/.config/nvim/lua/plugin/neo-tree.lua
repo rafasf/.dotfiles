@@ -1,33 +1,14 @@
 return {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      -- "nvim-tree/nvim-web-devicons",
-    },
-    keys = {
-      { "\\", ":Neotree reveal<cr>", desc = "NeoTree reveal", silent = true },
-    },
-    opts = {
-      filesystem = {
-        window = {
-          mappings = {
-            ["\\"] = "close_window",
-          },
-        },
-      },
-    },
+  "stevearc/oil.nvim",
+  lazy = false,
+  keys = {
+    { "\\", "<cmd>Oil<cr>", desc = "Open parent directory" },
   },
-  {
-    "antosha417/nvim-lsp-file-operations",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-neo-tree/neo-tree.nvim",
+  opts = {
+    default_file_explorer = true,
+    delete_to_trash = true,
+    view_options = {
+      show_hidden = true,
     },
-    config = function()
-      require("lsp-file-operations").setup()
-    end,
   },
 }

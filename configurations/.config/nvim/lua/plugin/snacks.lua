@@ -19,6 +19,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    progress = { enabled = true },
   },
   keys = {
     {

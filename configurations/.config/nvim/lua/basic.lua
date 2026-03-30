@@ -39,7 +39,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 10
 
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 
 vim.diagnostic.config({
@@ -67,3 +67,6 @@ vim.fn.mkdir(undodir, "p", "448") -- 448 = 0700 in decimal
 
 vim.opt.undofile = true
 vim.opt.undodir = undodir
+
+vim.opt.laststatus = 2
+vim.opt.statusline = " %f %m%r%=%{&ft}  %l:%c "
