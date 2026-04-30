@@ -63,7 +63,7 @@ end
 local undodir = vim.env.XDG_STATE_HOME .. "/nvim/undo"
 
 -- Create the directory if it doesn't exist
-vim.fn.mkdir(undodir, "p", "448") -- 448 = 0700 in decimal
+vim.fn.mkdir(undodir, "p", 448) -- 448 = 0700 in decimal
 
 vim.opt.undofile = true
 vim.opt.undodir = undodir

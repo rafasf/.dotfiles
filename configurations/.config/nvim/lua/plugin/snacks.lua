@@ -14,6 +14,11 @@ return {
     picker = {
       enabled = true,
       icons = { files = { enabled = false } },
+      sources = {
+        files = { hidden = true },
+        grep = { hidden = true },
+        smart = { hidden = true },
+      },
     },
     notifier = {
       enabled = true,
@@ -42,6 +47,20 @@ return {
         Snacks.picker.grep()
       end,
       desc = "[S]earch by [G]rep",
+    },
+    {
+      "<leader>sG",
+      function()
+        Snacks.picker.grep({ hidden = true, ignored = true })
+      end,
+      desc = "[S]earch by [G]rep (include ignored)",
+    },
+    {
+      "<leader>sF",
+      function()
+        Snacks.picker.files({ hidden = true, ignored = true })
+      end,
+      desc = "[S]earch [F]iles (include ignored)",
     },
     {
       "<leader>fc",
