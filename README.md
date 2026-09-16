@@ -44,7 +44,14 @@ git clone git@github.com:rafasf/dots.git ~/.dotfiles
 cd ~/.dotfiles && make setup
 ```
 
-5. Open a new shell
+5. Make fish your login shell (one-time, needs your password):
+
+```sh
+echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
+```
+
+6. Open a new shell
 
 `make setup` runs these steps individually if you ever need to re-run just
 one of them: `install` (stow), `brew` (Brewfile), `tmux-plugins` (TPM),
