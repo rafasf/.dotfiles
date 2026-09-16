@@ -8,11 +8,13 @@ and other tools using [GNU Stow](https://www.gnu.org/software/stow/).
 ```
 configurations/
   .config/        # XDG config dirs (fish, nvim, tmux, ghostty, ...)
+  Library/        # LaunchAgents (XDG vars for the login session)
   .bashrc
   .profile
   .zshenv
+bin/              # repo maintenance scripts (make check)
 Brewfile          # Homebrew dependencies
-Makefile          # stow wrapper
+Makefile          # setup: stow, brew, tmux plugins, launchd, checks
 ```
 
 ## Setup
@@ -35,16 +37,16 @@ brew install stow
 git clone git@github.com:rafasf/dots.git ~/.dotfiles
 ```
 
-4. Link configurations:
+4. Run setup — links configs, installs Brewfile deps (including 1Password,
+   ghostty), installs tmux plugins, and registers the XDG LaunchAgent:
 
 ```sh
-cd ~/.dotfiles && make
+cd ~/.dotfiles && make setup
 ```
 
-5. Install tools:
+5. Open a new shell
 
-```sh
-brew bundle install --file=~/.dotfiles/Brewfile
-```
-
-6. Open a new shell
+`make setup` runs these steps individually if you ever need to re-run just
+one of them: `install` (stow), `brew` (Brewfile), `tmux-plugins` (TPM),
+`launchctl` (XDG LaunchAgent), `check` (verifies XDG vars agree across
+fish/zsh/sh/launchd).
