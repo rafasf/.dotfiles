@@ -1,6 +1,9 @@
 [user]
   name = Rafael Ferreira
-  email = setme
+  signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMeEQn/ygbDKYUberV6orWRHdon7EBDZTJXq5pd+Paum
+
+[include]
+  path = ~/.config/git/local.gitconfig
 
 [core]
   excludesfile = ~/.config/git/ignore
@@ -51,10 +54,10 @@
   allowedSignersFile = ~/.config/git/allowed_signers
 
 [tag]
-  gpgsign = true
+	gpgsign = true
 
 [commit]
-  gpgsign = true
+	gpgsign = true
 
 [pull]
   rebase = true

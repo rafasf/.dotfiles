@@ -12,4 +12,5 @@ configurations/.config/fish/fish_variables
 configurations/.config/fish/conf.d/local/
 configurations/.config/fish/completions/
 
+configurations/.config/git/local.gitconfig
 

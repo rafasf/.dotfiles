@@ -14,6 +14,7 @@ return {
     dependencies = {
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
+      { "neovim/nvim-lspconfig" },
       { "saghen/blink.cmp" },
     },
     config = function()
@@ -66,7 +67,6 @@ return {
       })
 
       require("mason").setup()
-      require("mason-lspconfig").setup({ automatic_enable = true })
       require("mason-tool-installer").setup({
         ensure_installed = {
           -- LSP
@@ -90,8 +90,10 @@ return {
           "templ",
           "rubocop",
           "goimports",
+          "biome",
         },
       })
+      require("mason-lspconfig").setup({ automatic_enable = true })
     end,
   },
 }
