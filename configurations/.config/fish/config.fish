@@ -22,6 +22,16 @@ if type -q direnv
 end
 
 if type -q fzf
+    # Respect .gitignore and skip .git/ instead of fzf's default `find`
+    set -gx FZF_DEFAULT_COMMAND 'fd --hidden --strip-cwd-prefix --exclude .git'
+    set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+    set -gx FZF_ALT_C_COMMAND 'fd --type=d --hidden --strip-cwd-prefix --exclude .git'
+
+    set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+    # Preview: tree for directories, syntax-highlighted contents for files
+    set -gx FZF_CTRL_T_OPTS '--preview "[ -d {} ] && eza --tree --color=always --level=2 {} || bat --color=always --style=numbers --line-range=:500 {}"'
+    set -gx FZF_ALT_C_OPTS '--preview "eza --tree --color=always --level=2 {}"'
+
     fzf --fish | source
 end
 
