@@ -33,7 +33,7 @@ return {
         markdown = { "prettier" },
         lua = { "stylua" },
         ruby = { "rubocop" },
-        go = { "gofmt" },
+        go = { "goimports", "gofmt" },
         rust = { "rustfmt" },
         ocaml = { "ocamlformat" },
         templ = { "templ" },

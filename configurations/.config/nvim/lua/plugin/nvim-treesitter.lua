@@ -25,10 +25,6 @@ return {
       ts.install(parser):wait(3000)
     end
 
-    vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    vim.wo[0][0].foldmethod = "expr"
-    vim.api.nvim_command("set nofoldenable")
-
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
     vim.api.nvim_create_autocmd("FileType", {

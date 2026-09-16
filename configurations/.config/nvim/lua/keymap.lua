@@ -9,3 +9,8 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Paste over a visual selection without clobbering the clipboard/unnamed register:
+-- normally `p` in visual mode yanks the replaced selection first, overwriting
+-- whatever you just copied. Route the replaced text to the black hole register instead.
+vim.keymap.set("x", "p", '"_dP', { desc = "Paste over selection without overwriting register" })

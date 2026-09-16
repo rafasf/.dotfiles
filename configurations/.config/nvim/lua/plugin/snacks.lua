@@ -30,9 +30,9 @@ return {
     {
       "<leader>sf",
       function()
-        Snacks.picker.smart()
+        Snacks.picker.files()
       end,
-      desc = "[S]earch [F]iles (smart)",
+      desc = "[S]earch [F]iles",
     },
     {
       "<leader><leader>",
@@ -169,11 +169,10 @@ return {
       desc = "[G]oto [D]eclaration",
     },
     {
-      "gr",
+      "grr",
       function()
         Snacks.picker.lsp_references()
       end,
-      nowait = true,
       desc = "[G]oto [R]eferences",
     },
     {

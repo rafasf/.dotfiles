@@ -43,6 +43,10 @@ return {
               end,
             })
           end
+
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+          end
         end,
       })
 
@@ -78,14 +82,14 @@ return {
           "ruby-lsp",
           "tinymist",
           "vtsls",
-          -- Linters
-          "eslint_d",
+          "eslint-lsp",
           -- Formatters
           "stylua",
           "shfmt",
           "prettier",
           "templ",
           "rubocop",
+          "goimports",
         },
       })
     end,

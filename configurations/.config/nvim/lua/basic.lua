@@ -1,6 +1,5 @@
-vim.wo.wrap = false
-vim.wo.linebreak = false
-vim.wo.list = false
+vim.opt.wrap = false
+vim.opt.linebreak = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -14,7 +13,7 @@ vim.opt.expandtab = true
 vim.opt.breakindent = true
 vim.opt.textwidth = 80
 
-vim.wo.colorcolumn = "+1"
+vim.opt.colorcolumn = "+1"
 
 vim.opt.cursorline = true
 
@@ -38,6 +37,15 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 10
 
+vim.opt.updatetime = 250
+
+vim.opt.confirm = true
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.opt.inccommand = "split"
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
@@ -51,7 +59,9 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = " ",
     },
   },
-  virtual_text = true,
+  virtual_text = { source = "if_many" },
+  severity_sort = true,
+  float = { border = "rounded", source = "if_many" },
 })
 
 -- Enable undo file
@@ -70,3 +80,10 @@ vim.opt.undodir = undodir
 
 vim.opt.laststatus = 2
 vim.opt.statusline = " %f %m%r%=%{&ft}  %l:%c "
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Briefly highlight yanked text",
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
