@@ -15,6 +15,9 @@
       launchctl setenv XDG_DATA_HOME "$HOME/.local/share";
       launchctl setenv XDG_STATE_HOME "$HOME/.local/state";
       launchctl setenv XDG_CACHE_HOME "$HOME/.cache";
+      launchctl setenv NPM_CONFIG_INIT_MODULE "$HOME/.config/npm/config/npm-init.js";
+      launchctl setenv NPM_CONFIG_CACHE "$HOME/.cache/npm";
+      launchctl setenv NPM_CONFIG_USERCONFIG "$HOME/.config/npm/npmrc";
       launchctl setenv CARGO_HOME "$HOME/.local/share/cargo";
       launchctl setenv DOCKER_CONFIG "$HOME/.config/docker";
       launchctl setenv GNUPGHOME "$HOME/.local/share/gnupg";
