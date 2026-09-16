@@ -1,6 +1,6 @@
 # dotfiles
 
-Manages configurations for fish, neovim, tmux, ghostty, starship, yazi, bat,
+Manages configurations for fish, neovim, tmux, ghostty, starship, bat,
 and other tools using [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Structure
