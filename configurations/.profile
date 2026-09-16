@@ -1,3 +1,17 @@
-_xdg_sh="$HOME/.config/xdgdirs/xdgdirs.sh"
-[ -f "$_xdg_sh" ] && . "$_xdg_sh"
-unset _xdg_sh
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Tool-specific homes, kept out of $HOME
+export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
+export VOLTA_HOME="$XDG_DATA_HOME/volta"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
