@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>dev.rafasf.xdgenv</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>-c</string>
+    <string>
+      launchctl setenv XDG_CONFIG_HOME "$HOME/.config";
+      launchctl setenv XDG_DATA_HOME "$HOME/.local/share";
+      launchctl setenv XDG_STATE_HOME "$HOME/.local/state";
+      launchctl setenv XDG_CACHE_HOME "$HOME/.cache";
+      launchctl setenv CARGO_HOME "$HOME/.local/share/cargo";
+      launchctl setenv DOCKER_CONFIG "$HOME/.config/docker";
+      launchctl setenv GNUPGHOME "$HOME/.local/share/gnupg";
+      launchctl setenv GOPATH "$HOME/.local/share/go";
+      launchctl setenv VOLTA_HOME "$HOME/.local/share/volta";
+      launchctl setenv GRADLE_USER_HOME "$HOME/.local/share/gradle";
+      launchctl setenv ANDROID_HOME "$HOME/.local/share/android";
+      launchctl setenv LESSHISTFILE "$HOME/.cache/less/history";
+    </string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
