@@ -2,3 +2,5 @@
 for f in $__fish_config_dir/conf.d/local/*.fish
     source $f
 end
+
+set -gx SSH_ASKPASS op
