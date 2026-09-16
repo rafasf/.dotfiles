@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# Verify XDG/tool-home vars agree across every place that declares them:
+# zsh (zshenv), fish (conf.d/config_dirs.fish), sh (.profile), and the
+# launchd session (LaunchAgents/dev.rafasf.xdgenv.plist), so the four
+# copies introduced for robustness don't quietly drift apart.
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+profile="$repo_root/configurations/.profile"
+
+# Present in every source, including launchd.
+core_vars=(
+  XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_CACHE_HOME
+  CARGO_HOME DOCKER_CONFIG GNUPGHOME GOPATH VOLTA_HOME
+  GRADLE_USER_HOME ANDROID_HOME LESSHISTFILE
+)
+# Shell-only by design: npmrc interpolates these itself, so launchd
+# doesn't need to export them.
+shell_only_vars=(NPM_CONFIG_INIT_MODULE NPM_CONFIG_CACHE NPM_CONFIG_USERCONFIG)
+
+fish_val() { fish -c "echo \$$1" 2>/dev/null; }
+zsh_val()  { zsh -fc "source '$repo_root/configurations/.config/zsh/zshenv'; eval echo \\\$$1" 2>/dev/null; }
+sh_val()   { sh -c ". '$profile'; eval echo \\\$$1" 2>/dev/null; }
+launchd_val() { launchctl getenv "$1" 2>/dev/null || true; }
+
+mismatches=0
+
+check() {
+  local var="$1" check_launchd="$2"
+  local fish_v zsh_v sh_v launchd_v
+  fish_v=$(fish_val "$var")
+  zsh_v=$(zsh_val "$var")
+  sh_v=$(sh_val "$var")
+
+  local ref="$fish_v"
+  local ok=1
+  [ "$zsh_v" = "$ref" ] || ok=0
+  [ "$sh_v" = "$ref" ] || ok=0
+
+  if [ "$check_launchd" = "yes" ]; then
+    launchd_v=$(launchd_val "$var")
+    if [ -z "$launchd_v" ]; then
+      echo "WARN  $var: launchd has no value (agent not loaded?)"
+    elif [ "$launchd_v" != "$ref" ]; then
+      ok=0
+    fi
+  fi
+
+  if [ "$ok" = "1" ]; then
+    printf 'OK    %-25s %s\n' "$var" "$ref"
+  else
+    mismatches=$((mismatches + 1))
+    printf 'DRIFT %-25s fish=%s zsh=%s sh=%s' "$var" "$fish_v" "$zsh_v" "$sh_v"
+    [ "$check_launchd" = "yes" ] && printf ' launchd=%s' "${launchd_v:-<unset>}"
+    printf '\n'
+  fi
+}
+
+for var in "${core_vars[@]}"; do check "$var" yes; done
+for var in "${shell_only_vars[@]}"; do check "$var" no; done
+
+if [ "$mismatches" -gt 0 ]; then
+  echo
+  echo "$mismatches var(s) out of sync."
+  exit 1
+fi
+
+echo
+echo "All XDG/tool-home vars are in sync."
