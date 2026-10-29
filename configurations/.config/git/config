@@ -8,20 +8,24 @@
 [core]
   excludesfile = ~/.config/git/ignore
   pager = delta
+  fsmonitor = true
+  untrackedCache = true
 
 [push]
+  default = current
+  autoSetupRemote = true
   followTags = true
 
 [color]
   ui = auto
 
-[column]
-  ui = auto
-
 [fetch]
   prune = true
-  pruneTags = true
   all = true
+  writeCommitGraph = true
+
+[transfer]
+  fsckObjects = true
 
 [rerere]
   enabled = true
@@ -35,10 +39,54 @@
   lg = log --pretty=easy --graph
 
 [pretty]
-  easy = %C(yellow)%h%C(reset) %<(72,trunc)%s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
+  easy = %C(yellow)%h%C(reset) %G? %<(72,trunc)%s %C(green)(%ar)%C(reset) %an %C(bold blue)%d%C(reset)
+
+[format]
+  pretty = easy
+
+[log]
+  follow = true
+
+[diff]
+  algorithm = histogram
+  colorMoved = default
+  colorMovedWS = allow-indentation-change
+  mnemonicPrefix = true
+  renames = copies
+
+[blame]
+  coloring = highlightRecent
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  gpgsign = true
+  sort = version:refname
+
+[status]
+  showStash = true
+
+[help]
+  autocorrect = prompt
+
+[commit]
+  gpgsign = true
+  verbose = true
 
 [merge]
   conflictstyle = zdiff3
+  ff = only
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+  autoSquash = true
+
+[init]
+  defaultBranch = main
 
 [filter "lfs"]
   required = true
@@ -53,18 +101,6 @@
   program = ~/.config/git/op-sign
   allowedSignersFile = ~/.config/git/allowed_signers
 
-[tag]
-	gpgsign = true
-
-[commit]
-	gpgsign = true
-
-[pull]
-  rebase = true
-
-[init]
-  defaultBranch = main
-
 [interactive]
   diffFilter = delta --color-only --features=interactive
 
@@ -72,4 +108,4 @@
   navigate = true
 
 [includeIf "gitdir:~/Projects/tw/"]
-    path = ~/Projects/tw/.gitconfig
+  path = ~/Projects/tw/.gitconfig
