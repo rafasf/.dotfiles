@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# gpg.ssh.program: signs with the 1Password SSH key matching git's signingKey,
+# authenticating through the op CLI (terminal) instead of the 1Password agent GUI.
+# git calls it as: op-sign -Y sign -n git -f <pubkey-file> [-U] <buffer>
+set -euo pipefail
+
+# git also calls this for verify/find-principals; only signing goes through op
+[ "${1:-}" = "-Y" ] && [ "${2:-}" = "sign" ] || exec ssh-keygen "$@"
+
+account=my
+keychain_service=op-sign
+cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/op-sign
+cache=$cache_dir/keys # lines: "<type> <base64> <item id>"
+
+while getopts "Y:n:f:U" opt; do
+  case $opt in f) pubfile=$OPTARG ;; *) ;; esac
+done
+buffer="${*: -1}"
+
+# Reuse the session from the keychain; sign in on the terminal when it has expired.
+if [ -z "${OP_SESSION_my:-}" ]; then
+  OP_SESSION_my=$(security find-generic-password -s "$keychain_service" -w 2>/dev/null || true)
+  export OP_SESSION_my
+fi
+if ! op whoami >/dev/null 2>&1; then
+  OP_SESSION_my=$(op signin --account "$account" --raw </dev/tty 2>/dev/tty)
+  export OP_SESSION_my
+  security add-generic-password -U -s "$keychain_service" -a "$USER" -w "$OP_SESSION_my"
+fi
+
+want=$(awk '{print $1" "$2}' "$pubfile")
+
+find_id() { awk -v k="$want" '$1" "$2==k {print $3; exit}' "$cache" 2>/dev/null || true; }
+
+rebuild_cache() {
+  mkdir -p "$cache_dir"
+  : >"$cache.tmp"
+  for id in $(op item list --categories "SSH Key" --format json | jq -r '.[].id'); do
+    op item get "$id" --fields "public key" | tr -d '"' | awk -v id="$id" '{print $1" "$2" "id}' >>"$cache.tmp"
+  done
+  mv "$cache.tmp" "$cache"
+}
+
+# The private key only ever lives in a throwaway ssh-agent's memory, never on disk.
+eval "$(ssh-agent -s)" >/dev/null
+trap 'kill "$SSH_AGENT_PID"' EXIT
+
+load_key() {
+  op item get "$1" --fields "private key" --reveal --format json \
+    | jq -r '.ssh_formats.openssh.value // .value' \
+    | ssh-add - 2>/dev/null
+}
+
+loaded_key() { ssh-add -L | awk '{print $1" "$2}'; }
+
+item=$(find_id)
+if [ -z "$item" ]; then
+  rebuild_cache
+  item=$(find_id)
+fi
+[ -n "$item" ] || { echo "op-sign: no 1Password SSH key matches $pubfile" >&2; exit 1; }
+
+load_key "$item"
+# the cache can go stale if the key was replaced; the loaded key must match
+if [ "$(loaded_key)" != "$want" ]; then
+  ssh-add -D 2>/dev/null
+  rebuild_cache
+  item=$(find_id)
+  [ -n "$item" ] || { echo "op-sign: no 1Password SSH key matches $pubfile" >&2; exit 1; }
+  load_key "$item"
+fi
+
+ssh-keygen -Y sign -n git -f "$pubfile" -U "$buffer"
